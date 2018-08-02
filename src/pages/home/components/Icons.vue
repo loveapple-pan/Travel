@@ -9,17 +9,15 @@
                     <p class="icon-des">{{icon.des}}</p>
                 </div>
             </swiper-slide>
-            <div class="swiper-pagination"  slot="pagination"></div>
         </swiper>
     </div>
 </template>
 <script>
 export default {
   name: 'HomeIcons',
-  data() {
+  data () {
     return {
       swiperOption: {
-        pagination: '.swiper-pagination',
         autoplay: false
       },
       iconList: [
@@ -81,7 +79,7 @@ export default {
     }
   },
   computed: {
-    pages() {
+    pages () {
       let pages = []
       this.iconList.forEach((item, index) => {
         let page = Math.floor(index / 8)
