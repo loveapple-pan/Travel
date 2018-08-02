@@ -4,7 +4,7 @@
             周末去哪
         </div>
         <ul>
-            <li class="item border-bottom" v-for="(item,index) in recommendList" :key="index">
+            <li class="item border-bottom" v-for="(item,index) in weekendLists" :key="index">
                 <div class="item-img-wrap">
                     <img class="item-img" :src="item.imgUrl"/>
                 </div>
@@ -22,28 +22,22 @@
 <script>
 export default {
   name: 'HomeWeekend',
+  props: {
+    weekendList: {
+      type: Array,
+      default: function () {
+        return []
+      }
+    }
+  },
   data () {
     return {
-      recommendList: [
-        {
-          imgUrl:
-            'http://img1.qunarzz.com/sight/source/1505/7d/df6ff468331c43.jpg_r_640x214_1f3783d0.jpg',
-          title: '大连圣亚海洋世界',
-          desc: ' 浪漫大连首战，浪漫的海洋主题乐园'
-        },
-        {
-          imgUrl:
-            'http://img1.qunarzz.com/sight/source/1505/7d/df6ff468331c43.jpg_r_640x214_1f3783d0.jpg',
-          title: '大连圣亚海洋世界',
-          desc: ' 浪漫大连首战，浪漫的海洋主题乐园'
-        },
-        {
-          imgUrl:
-            'http://img1.qunarzz.com/sight/source/1505/7d/df6ff468331c43.jpg_r_640x214_1f3783d0.jpg',
-          title: '大连圣亚海洋世界',
-          desc: ' 浪漫大连首战，浪漫的海洋主题乐园'
-        }
-      ]
+      weekendLists: this.weekendList
+    }
+  },
+  watch: {
+    weekendList: function (value) {
+      this.weekendLists = value
     }
   }
 }
@@ -55,7 +49,7 @@ export default {
     line-height 0.8rem
     text-indent 0.2rem
     background #eee
-    margin-bottom .1rem
+    margin-bottom 0.1rem
 .item-img-wrap
     height 0
     overflow hidden
