@@ -5,14 +5,14 @@
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wraper">
-                        <div class="button">北京</div>
+                        <div class="button">{{currentCity}}</div>
                     </div>
                 </div>
             </div>
             <div class="area">
                 <div class="title border-topbottom">热门城市</div>
                 <div class="button-list">
-                    <div class="button-wraper" v-for="item in hotCities" :key="item.id">
+                    <div class="button-wraper" v-for="item in hotCities" :key="item.id" @click="changeCity(item.name)">
                         <div class="button">{{item.name}}</div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
             <div class="area" v-for="(item,value) of cities" :key="value" :ref="value">
                 <div class="title border-topbottom">{{value}}</div>
                 <div class="item-list">
-                    <div class="item border-bottom" v-for="city in item" :key="city.id">{{city.name}}</div>
+                    <div class="item border-bottom" v-for="city in item" :key="city.id" @click="changeCity(city.name)">{{city.name}}</div>
                 </div>
             </div>
         </div>
@@ -28,12 +28,24 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import Bscroll from 'better-scroll'
 export default {
   props: ['hotCities', 'cities', 'letter'],
   name: 'CityList',
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
+  },
+  computed: {
+    ...mapState(['currentCity'])
+  },
+  methods: {
+    changeCity (cityName) {
+      //  提交 改变vuex里的数据状态
+      this.$store.commit('changeCity', cityName)
+      //  跳转路由到首页
+      this.$router.push('/')
+    }
   },
   watch: {
     letter: function () {
