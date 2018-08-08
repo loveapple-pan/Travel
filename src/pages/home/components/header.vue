@@ -51,7 +51,8 @@ export default {
         margin-top 0.12rem
         margin-left 0.2rem
     .header-right
-        width 1.24rem
+        min-width 1.04rem
+        padding 0 .1rem
         float right
         text-align center
         color #fff
