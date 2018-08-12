@@ -36,8 +36,9 @@ export default {
     move: {
       inserted (el, binding, vnode) {
         let _this = vnode.context
-        function onTouchStart () {
+        function onTouchStart (e) {
           el.start = true
+          e.preventDefault()
         }
         function onTouchMoving (e) {
           if (el.start) {
