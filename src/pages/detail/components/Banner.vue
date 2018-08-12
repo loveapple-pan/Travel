@@ -8,7 +8,7 @@
             </div>
         </div>
         <fade-animation>
-          <common-gallary :imgs="imgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
+          <common-gallary :imgs="gallaryImgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
         </fade-animation>
     </div>
 </template>
